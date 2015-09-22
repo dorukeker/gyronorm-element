@@ -1,0 +1,28 @@
+{
+  "name": "gyronorm-element",
+  "version": "0.0.1",
+  "homepage": "https://github.com/dorukeker/gyronorm-element.git",
+  "authors": [
+    "Doruk Eker"
+  ],
+  "description": "Element wrapper for the gyronorm.js library",
+  "main": "dist/gyronorm-element.html",
+  "ignore": [
+    "README.md",
+    "LICENSE",
+    "demo/*",
+    "demo",
+    "Gruntfile.js",
+    "package.json",
+    "bower_components/*",
+    "node_modules/*"
+  ],
+  "keywords": [
+    "devicemotion",
+    "deviceorientation"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "gyronorm": "*"
+  }
+}

@@ -23,6 +23,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "gyronorm": "*"
+    "gyronorm": "*",
+    "polymer": "Polymer/polymer#^1.1.0"
   }
 }

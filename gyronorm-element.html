@@ -4,37 +4,60 @@
 <dom-module id="gyronorm-element">
 
   <script>
+    var gn = new GyroNorm();
+
     Polymer({
       is: "gyronorm-element",
-      // Properties will come here to bubble up the values from gyronorm.js
-      // Also expose options as properties to the wrapper of the element
+      properties:{
+        // Values for the deviceorientation and devicemotion as return from the Gyronorm.js
+        alpha:{type: Number , notify: true , value: 0},
+        beta:{type: Number , notify: true , value: 0},
+        gamma:{type: Number , notify: true , value: 0},
+        accelerationX:{type: Number , notify: true , value: 0},
+        accelerationY:{type: Number , notify: true , value: 0},
+        accelerationZ:{type: Number , notify: true , value: 0},
+        gravityX:{type: Number , notify: true , value: 0},
+        gravityY:{type: Number , notify: true , value: 0},
+        gravityZ:{type: Number , notify: true , value: 0},
+        rotationRateAlpha:{type: Number , notify: true , value: 0},
+        rotationRateBeta:{type: Number , notify: true , value: 0},
+        rotationRateGamma:{type: Number , notify: true , value: 0},
+        // Log message attribute to pass the logs to the host
+        logMessage:{type: String , notify: true , value: ''}
+      },
       ready: function(){
-        var gn = new GyroNorm();
 
+        // Initialize gn object.
         gn.init().then(function(){
+
           gn.start(function(data){
-              // Process:
-              // data.do.alpha    ( deviceorientation event alpha value )
-              // data.do.beta     ( deviceorientation event beta value )
-              // data.do.gamma    ( deviceorientation event gamma value )
-              // data.do.absolute ( deviceorientation event absolute value )
 
-              // data.dm.x        ( devicemotion event acceleration x value )
-              // data.dm.y        ( devicemotion event acceleration y value )
-              // data.dm.z        ( devicemotion event acceleration z value )
+            this.alpha = data.do.alpha;
+            this.beta = data.do.beta;
+            this.gamma = data.do.gamma;
 
-              // data.dm.gx       ( devicemotion event accelerationIncludingGravity x value )
-              // data.dm.gy       ( devicemotion event accelerationIncludingGravity y value )
-              // data.dm.gz       ( devicemotion event accelerationIncludingGravity z value )
+            this.accelerationX = data.dm.x;
+            this.accelerationY = data.dm.y;
+            this.accelerationZ = data.dm.z;
 
-              // data.dm.alpha    ( devicemotion event rotationRate alpha value )
-              // data.dm.beta     ( devicemotion event rotationRate beta value )
-              // data.dm.gamma    ( devicemotion event rotationRate gamma value )
-              });
-          }).catch(function(e){
-            // Catch if the DeviceOrientation or DeviceMotion is not supported by the browser or device
-          });
-        }
+            this.gravityX = data.dm.gx;
+            this.gravityY = data.dm.gy;
+            this.gravityZ = data.dm.gz;
+
+            this.rotationRateAlpha = data.dm.alpha;
+            this.rotationRateBeta = data.dm.beta;
+            this.rotationRateGamma = data.dm.gamma;
+
+          }.bind(this));
+
+        }.bind(this)).catch(function(e){
+
+          this.logMessage = e;
+
+        }.bind(this));
+
+      }
+
     });
   </script>
 

@@ -5,13 +5,26 @@
 
   <template>
 
-    <gyronorm-element></gyronorm-element>
-    
+    <gyronorm-element
+        alpha="{{alpha}}"
+        beta="{{beta}}"
+        gamma="{{gamma}}"
+    ></gyronorm-element>
+
+    <span>{{alpha}}</span>
+    <span>{{beta}}</span>
+    <span>{{gamma}}</span>
+
   </template>
 
   <script>
     Polymer({
-      is: "gyronorm-element-wrapper"
+      is: "gyronorm-element-wrapper",
+      properties:{
+        alpha: Number,
+        beta: Number,
+        gamma: Number
+      }
     });
   </script>
 

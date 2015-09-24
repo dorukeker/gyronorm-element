@@ -4,7 +4,6 @@
 <dom-module id="gyronorm-element">
 
   <script>
-    var gn = new GyroNorm();
 
     Polymer({
       is: "gyronorm-element",
@@ -26,6 +25,8 @@
         logMessage:{type: String , notify: true , value: ''}
       },
       ready: function(){
+
+        var gn = new GyroNorm();
 
         // Initialize gn object.
         gn.init().then(function(){

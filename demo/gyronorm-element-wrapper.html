@@ -6,6 +6,7 @@
 <link rel="import" href="/bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="/bower_components/paper-input/paper-input.html">
 <link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-card/paper-card.html">
 
 <dom-module id="gyronorm-element-wrapper">
 
@@ -13,13 +14,39 @@
 
     <style>
 
-      paper-button{
-        background: #e91e63;
-        color: white;
+      /* Soem syling for the visual elements*/
+
+      paper-input{
+        display: inline-block;
+        width: 32%;
       }
 
-      paper-button[active]{
-        background: #ccc;
+      paper-card {
+        width: 100%;
+        margin-top: 20px;
+        --paper-card-header-color: #333;
+        --paper-card-header: {
+          background-color:#ccc;
+        }
+        --paper-card-header-text: {
+          font-size:14px;
+        }
+      }
+
+      paper-button{
+        width: 100%;
+        margin: 0
+      }
+
+      paper-tabs{
+        --paper-tabs-selection-bar-color: #ccc;
+      }
+
+      paper-tab{
+        --paper-tab-ink: #ccc;
+        --paper-tab-content:{
+          font-size:20px;
+        }
       }
 
     </style>
@@ -30,49 +57,71 @@
         alpha="{{alpha}}"
         beta="{{beta}}"
         gamma="{{gamma}}"
+        acceleration-x="{{accelerationX}}"
+        acceleration-y="{{accelerationY}}"
+        acceleration-z="{{accelerationZ}}"
+        gravity-x="{{gravityX}}"
+        gravity-y="{{gravityY}}"
+        gravity-z="{{gravityZ}}"
+        rotation-rate-alpha="{{rotationRateAlpha}}"
+        rotation-rate-beta="{{rotationRateBeta}}"
+        rotation-rate-gamma="{{rotationRateGamma}}"
+        log-message-change=""
     ></gyronorm-element>
 
     <!-- Start of interface  -->
 
     <paper-tabs selected="{{selected}}">
-      <paper-tab>Orientation</paper-tab>
-      <paper-tab>Motion</paper-tab>
+      <paper-tab>Events</paper-tab>
       <paper-tab>Logs</paper-tab>
     </paper-tabs>
 
     <iron-pages selected="{{selected}}">
+
       <div>
+        <paper-card heading="Device Orientation">
+          <div class="card-content">
+            <paper-input label="alpha" value="[[alpha]]" disabled></paper-input>
+            <paper-input label="beta" value="[[beta]]" disabled></paper-input>
+            <paper-input label="gamma" value="[[gamma]]" disabled></paper-input>
+          </div>
+          <div class="card-actions">
+            <paper-button class="colorful">Set head direction</paper-button>
+          </div>
+        </paper-card>
 
-        <paper-input label="alpha" value="[[alpha]]" disabled></paper-input>
-        <paper-input label="beta" value="[[beta]]" disabled></paper-input>
-        <paper-input label="gamma" value="[[gamma]]" disabled></paper-input>
+        <paper-card heading="Acceleration">
+          <div class="card-content">
+            <paper-input class="small" label="x" value="[[accelerationX]]" disabled></paper-input>
+            <paper-input class="small" label="y" value="[[accelerationY]]" disabled></paper-input>
+            <paper-input class="small" label="z" value="[[accelerationZ]]" disabled></paper-input>
+          </div>
+        </paper-card>
 
-        <paper-button class="colorful">Set head direction</paper-button>
+        <paper-card heading="Acceleration including gravity">
+          <div class="card-content">
+            <paper-input class="small" label="x" value="[[gravityX]]" disabled></paper-input>
+            <paper-input class="small" label="y" value="[[gravityY]]" disabled></paper-input>
+            <paper-input class="small" label="z" value="[[gravityZ]]" disabled></paper-input>
+          </div>
+          <div class="card-actions">
+            <paper-button toggles>Normalize</paper-button>
+          </div>
+        </paper-card>
+
+        <paper-card heading="Rotation Rate">
+          <div class="card-content">
+            <paper-input class="small" label="alpha" value="[[rotationRateAlpha]]" disabled></paper-input>
+            <paper-input class="small" label="beta" value="[[rotationRateBeta]]" disabled></paper-input>
+            <paper-input class="small" label="gamma" value="[[rotationRateGamma]]" disabled></paper-input>
+          </div>
+        </paper-card>
 
       </div>
       <div>
-
-        Acceleration
-        <paper-input label="x" value="0" disabled></paper-input>
-        <paper-input label="y" value="0" disabled></paper-input>
-        <paper-input label="z" value="0" disabled></paper-input>
-
-        Acceleration including gravity
-        <paper-input label="x" value="0" disabled></paper-input>
-        <paper-input label="y" value="0" disabled></paper-input>
-        <paper-input label="z" value="0" disabled></paper-input>
-
-        <paper-button toggles>Normalize</paper-button>
-
-        Rotation Rate
-        <paper-input label="alpha" value="0" disabled></paper-input>
-        <paper-input label="beta" value="0" disabled></paper-input>
-        <paper-input label="gamma" value="0" disabled></paper-input>
-
-      </div>
-      <div>
-        Logs
-        
+        <paper-card>
+          <div class="card-content">{{logMessage}}</div>
+        </paper-card>
       </div>
     </iron-pages>
 
@@ -87,10 +136,23 @@
         alpha: Number,
         beta: Number,
         gamma: Number,
+        accelerationX: Number,
+        accelerationY: Number,
+        accelerationZ: Number,
+        gravityX: Number,
+        gravityY: Number,
+        gravityZ: Number,
+        rotationRateAlpha: Number,
+        rotationRateBeta: Number,
+        rotationRateGamma: Number,
         selected:{
           type: Number,
           value: 0
-        }
+        },
+        logMessage:String
+      },
+      _prependLog: function(e){
+        // TODO trigger this when the log message of the child element changes. And prepend th message to the logMessage of the host.
       }
     });
   </script>

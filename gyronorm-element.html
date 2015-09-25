@@ -9,20 +9,20 @@
       is: "gyronorm-element",
       properties:{
         // Values for the deviceorientation and devicemotion as return from the Gyronorm.js
-        alpha:{type: Number , notify: true , value: 0},
-        beta:{type: Number , notify: true , value: 0},
-        gamma:{type: Number , notify: true , value: 0},
-        accelerationX:{type: Number , notify: true , value: 0},
-        accelerationY:{type: Number , notify: true , value: 0},
-        accelerationZ:{type: Number , notify: true , value: 0},
-        gravityX:{type: Number , notify: true , value: 0},
-        gravityY:{type: Number , notify: true , value: 0},
-        gravityZ:{type: Number , notify: true , value: 0},
-        rotationRateAlpha:{type: Number , notify: true , value: 0},
-        rotationRateBeta:{type: Number , notify: true , value: 0},
-        rotationRateGamma:{type: Number , notify: true , value: 0},
+        alpha:{type: Number , notify: true , value: 0 , readOnly: true},
+        beta:{type: Number , notify: true , value: 0 , readOnly: true},
+        gamma:{type: Number , notify: true , value: 0 , readOnly: true},
+        accelerationX:{type: Number , notify: true , value: 0 , readOnly: true},
+        accelerationY:{type: Number , notify: true , value: 0 , readOnly: true},
+        accelerationZ:{type: Number , notify: true , value: 0 , readOnly: true},
+        gravityX:{type: Number , notify: true , value: 0 , readOnly: true},
+        gravityY:{type: Number , notify: true , value: 0 , readOnly: true},
+        gravityZ:{type: Number , notify: true , value: 0 , readOnly: true},
+        rotationRateAlpha:{type: Number , notify: true , value: 0 , readOnly: true},
+        rotationRateBeta:{type: Number , notify: true , value: 0 , readOnly: true},
+        rotationRateGamma:{type: Number , notify: true , value: 0 , readOnly: true},
         // Log message attribute to pass the logs to the host
-        logMessage:{type: String , notify: true , value: ''}
+        logMessage:{type: String , notify: true , value: '', readOnly: true}
       },
       ready: function(){
 
@@ -33,27 +33,27 @@
 
           gn.start(function(data){
 
-            this.alpha = data.do.alpha;
-            this.beta = data.do.beta;
-            this.gamma = data.do.gamma;
+            this._setAlpha(data.do.alpha);
+            this._setBeta(data.do.beta);
+            this._setGamma(data.do.gamma);
 
-            this.accelerationX = data.dm.x;
-            this.accelerationY = data.dm.y;
-            this.accelerationZ = data.dm.z;
+            this._setAccelerationX(data.dm.x);
+            this._setAccelerationY(data.dm.y);
+            this._setAccelerationZ(data.dm.z);
 
-            this.gravityX = data.dm.gx;
-            this.gravityY = data.dm.gy;
-            this.gravityZ = data.dm.gz;
+            this._setGravityX(data.dm.gx);
+            this._setGravityY(data.dm.gy);
+            this._setGravityZ(data.dm.gz);
 
-            this.rotationRateAlpha = data.dm.alpha;
-            this.rotationRateBeta = data.dm.beta;
-            this.rotationRateGamma = data.dm.gamma;
+            this._setRotationRateAlpha(data.dm.alpha);
+            this._setRotationRateBeta(data.dm.beta);
+            this._setRotationRateGamma(data.dm.gamma);
 
           }.bind(this));
 
         }.bind(this)).catch(function(e){
 
-          this.logMessage = e;
+          this._setLogMessage(e);
 
         }.bind(this));
 

@@ -66,7 +66,7 @@
         rotation-rate-alpha="{{rotationRateAlpha}}"
         rotation-rate-beta="{{rotationRateBeta}}"
         rotation-rate-gamma="{{rotationRateGamma}}"
-        log-message-change=""
+        log-message="{{logMessage}}"
     ></gyronorm-element>
 
     <!-- Start of interface  -->
@@ -120,7 +120,13 @@
       </div>
       <div>
         <paper-card>
-          <div class="card-content">{{logMessage}}</div>
+          <div class="card-content">
+            <ul>
+              <template is="dom-repeat" items="{{logs}}">
+                  <li>{{item}}</li>
+              </template>
+            </ul>
+          </div>
         </paper-card>
       </div>
     </iron-pages>
@@ -145,14 +151,22 @@
         rotationRateAlpha: Number,
         rotationRateBeta: Number,
         rotationRateGamma: Number,
+        logMessage: {
+          type: String,
+          observer: '_prependLog'
+        },
         selected:{
           type: Number,
           value: 0
         },
-        logMessage:String
+        logs: {
+          type: Array,
+          value: []
+        }
       },
       _prependLog: function(e){
-        // TODO trigger this when the log message of the child element changes. And prepend th message to the logMessage of the host.
+        if(e !== '')
+          this.unshift('logs',e);
       }
     });
   </script>

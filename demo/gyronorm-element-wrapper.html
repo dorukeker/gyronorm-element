@@ -106,7 +106,8 @@
             <paper-input class="small" label="z" value="[[gravityZ]]" disabled></paper-input>
           </div>
           <div class="card-actions">
-            <paper-button toggles>Normalize</paper-button>
+            <paper-button toggles on-click="_toggleNormalize" hidden$="{{normalized}}">Normalize</paper-button>
+            <paper-button toggles on-click="_toggleNormalize" hidden$="{{!normalized}}">Show Original</paper-button>
           </div>
         </paper-card>
 
@@ -152,6 +153,10 @@
         rotationRateAlpha: Number,
         rotationRateBeta: Number,
         rotationRateGamma: Number,
+        normalized:{
+          type: Boolean,
+          value: false
+        },
         logMessage: {
           type: String,
           observer: '_prependLog'
@@ -171,6 +176,9 @@
       },
       _setHeadDirection: function(){
         this.$.gyronorm.setHeadDirection();
+      },
+      _toggleNormalize: function(){
+        this.normalized = !this.normalized;
       }
     });
   </script>

@@ -26,16 +26,16 @@
       },
       ready: function(){
 
-        var gn = new GyroNorm();
+        this.gn = new GyroNorm();
 
         var args = {
           logger:this.onLogHandler
         };
 
         // Initialize gn object.
-        gn.init(args).then(function(){
+        this.gn.init(args).then(function(){
 
-          gn.start(function(data){
+          this.gn.start(function(data){
 
             this._setAlpha(data.do.alpha);
             this._setBeta(data.do.beta);

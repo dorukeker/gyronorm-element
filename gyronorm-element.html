@@ -29,7 +29,7 @@
         this.gn = new GyroNorm();
 
         var args = {
-          logger:this.onLogHandler
+          logger:this._onLogHandler
         };
 
         // Initialize gn object.
@@ -62,7 +62,7 @@
         }.bind(this));
 
       },
-      onLogHandler: function(data){
+      _onLogHandler: function(data){
         this._setLogMessage(data.message);
       }
 

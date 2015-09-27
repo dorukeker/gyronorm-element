@@ -86,7 +86,7 @@
             <paper-input label="gamma" value="[[gamma]]" disabled></paper-input>
           </div>
           <div class="card-actions">
-            <paper-button class="colorful">Set head direction</paper-button>
+            <paper-button class="colorful" on-click="_setHeadDirection">Set head direction</paper-button>
           </div>
         </paper-card>
 
@@ -167,6 +167,9 @@
       _prependLog: function(e){
         if(e !== '')
           this.unshift('logs',e);
+      },
+      _setHeadDirection: function(){
+        this.$.gyronorm.setHeadDirection();
       }
     });
   </script>

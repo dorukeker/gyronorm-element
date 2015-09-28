@@ -67,6 +67,12 @@
       },
       setHeadDirection: function(){
         this.gn.setHeadDirection();
+      },
+      normalizeGravity: function(){
+        this.gn.normalizeGravity(true);
+      },
+      provideOriginalGravity: function(){
+        this.gn.normalizeGravity(false);
       }
 
     });

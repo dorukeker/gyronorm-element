@@ -179,6 +179,17 @@
       },
       _toggleNormalize: function(){
         this.normalized = !this.normalized;
+        if(this.normalized){
+          this._normalizeGravity();
+        } else {
+          this._showOriginalGravity();
+        }
+      },
+      _normalizeGravity: function(){
+        this.$.gyronorm.normalizeGravity();
+      },
+      _showOriginalGravity: function(){
+        this.$.gyronorm.provideOriginalGravity();
       }
     });
   </script>

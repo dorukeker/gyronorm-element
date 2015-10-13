@@ -27,6 +27,13 @@
       },
       ready: function(){
 
+        console.log(this.decimalCount);
+
+        this._initGyronorm();
+
+      },
+      _initGyronorm: function(){
+
         this.gn = new GyroNorm();
 
         var args = {

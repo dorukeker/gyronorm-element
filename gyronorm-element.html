@@ -23,21 +23,24 @@
         rotationRateGamma:{type: Number , notify: true , value: 0 , readOnly: true},
         // Log message attribute to pass the logs to the host
         logMessage:{type: String , notify: true , value: '', readOnly: true},
-        decimalCount:{type: Number, value: 2} // TODO add observer to this
+        decimalCount:{type: Number, value: 2, observer: '_initGyronorm'} // TODO add observer to this
       },
       ready: function(){
-
-        console.log(this.decimalCount);
 
         this._initGyronorm();
 
       },
       _initGyronorm: function(){
 
+        if(this.gn){
+          this.gn.stop();
+        }
+
         this.gn = new GyroNorm();
 
         var args = {
-          logger:this._onLogHandler
+          logger:this._onLogHandler,
+          decimalCount: this.decimalCount
         };
 
         // Initialize gn object.

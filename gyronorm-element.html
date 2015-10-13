@@ -22,7 +22,8 @@
         rotationRateBeta:{type: Number , notify: true , value: 0 , readOnly: true},
         rotationRateGamma:{type: Number , notify: true , value: 0 , readOnly: true},
         // Log message attribute to pass the logs to the host
-        logMessage:{type: String , notify: true , value: '', readOnly: true}
+        logMessage:{type: String , notify: true , value: '', readOnly: true},
+        decimalCount:{type: Number, value: 2} // TODO add observer to this
       },
       ready: function(){
 

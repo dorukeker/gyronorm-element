@@ -12,11 +12,15 @@ AFter installing the element to you project, you can use the HTML imports to add
 
 ```html
 ...
+
 <link rel="import" href="[path to the element]/gyronorm-element.html">
+
 ...
 ```
 
 ## How to use
+After importing to your HTML file, you can use the element like any other HTML elements in the `<body></body>` section.
+
 
 ### Attributes
 

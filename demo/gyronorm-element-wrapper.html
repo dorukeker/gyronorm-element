@@ -71,6 +71,7 @@
         decimal-count="{{decimalCount}}"
         frequency="{{frequency}}"
         gravity-normalized="{{gravityNormalized}}"
+        orientation-base="{{orientationBase}}"
     ></gyronorm-element>
 
     <!-- Start of interface  -->
@@ -167,6 +168,10 @@
         gravityNormalized:{
           type: Boolean,
           value: true
+        },
+        orientationBase:{
+          type: String,
+          value: 'game'
         },
         logMessage: {
           type: String,

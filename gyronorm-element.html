@@ -25,7 +25,8 @@
         logMessage:{type: String , notify: true , value: '', readOnly: true},
         decimalCount:{type: Number, value: 2, observer: '_initGyronorm'},
         frequency:{type: Number, value: 50, observer: '_initGyronorm'},
-        gravityNormalized:{type: Boolean, value: true, observer: '_onGravityNormalizedChanged'}
+        gravityNormalized:{type: Boolean, value: true, observer: '_onGravityNormalizedChanged'},
+        orientationBase:{type: String, value: GyroNorm.GAME, observer: '_initGyronorm'}
       },
       ready: function(){
 
@@ -38,13 +39,19 @@
           this.gn.stop();
         }
 
+
+        if(this.orientationBase !== GyroNorm.GAME && this.orientationBase !== GyroNorm.WORLD){
+          this.orientationBase = GyroNorm.GAME;
+        }
+
         this.gn = new GyroNorm();
 
         var args = {
           logger:this._onLogHandler,
           decimalCount: this.decimalCount,
           frequency: this.frequency,
-          gravityNormalized: this.gravityNormalized
+          gravityNormalized: this.gravityNormalized,
+          orientationBase:this.orientationBase
         };
 
         // Initialize gn object.

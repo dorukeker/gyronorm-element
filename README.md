@@ -21,6 +21,19 @@ AFter installing the element to you project, you can use the HTML imports to add
 ## How to use
 After importing to your HTML file, you can use the element like any other HTML elements in the `<body></body>` section.
 
+```html
+...
+<body>
+	<gyronorm-element></gyronorm-element>
+</body>
+...
+```
+
+When the element is rendered, the gyronorm object is initilized with default values, and start to provide deviceorientation and devicemotion data.
+
+You can use attributes to access this data and/or change the default options.
+
+The attributes and functions are explained below.
 
 ### Attributes
 

@@ -24,7 +24,8 @@
         // Log message attribute to pass the logs to the host
         logMessage:{type: String , notify: true , value: '', readOnly: true},
         decimalCount:{type: Number, value: 2, observer: '_initGyronorm'},
-        frequency:{type: Number, value: 50, observer: '_initGyronorm'}
+        frequency:{type: Number, value: 50, observer: '_initGyronorm'},
+        gravityNormalized:{type: Boolean, value: true, observer: '_onGravityNormalizedChanged'}
       },
       ready: function(){
 
@@ -42,7 +43,8 @@
         var args = {
           logger:this._onLogHandler,
           decimalCount: this.decimalCount,
-          frequency: this.frequency
+          frequency: this.frequency,
+          gravityNormalized: this.gravityNormalized
         };
 
         // Initialize gn object.
@@ -78,14 +80,11 @@
       _onLogHandler: function(data){
         this._setLogMessage(data.message);
       },
+      _onGravityNormalizedChanged: function(){
+        this.gn.normalizeGravity(this.gravityNormalized);
+      },
       setHeadDirection: function(){
         this.gn.setHeadDirection();
-      },
-      provideNormalizeGravity: function(){
-        this.gn.normalizeGravity(true);
-      },
-      provideOriginalGravity: function(){
-        this.gn.normalizeGravity(false);
       }
 
     });

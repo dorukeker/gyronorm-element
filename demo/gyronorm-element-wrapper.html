@@ -70,6 +70,7 @@
         log-message="{{logMessage}}"
         decimal-count="{{decimalCount}}"
         frequency="{{frequency}}"
+        gravityNormalized="{{gravityNormalized}}"
     ></gyronorm-element>
 
     <!-- Start of interface  -->
@@ -108,8 +109,8 @@
             <paper-input class="small" label="z" value="[[gravityZ]]" disabled></paper-input>
           </div>
           <div class="card-actions">
-            <paper-button toggles on-click="_toggleNormalize" hidden$="{{normalized}}">Normalize</paper-button>
-            <paper-button toggles on-click="_toggleNormalize" hidden$="{{!normalized}}">Show Original</paper-button>
+            <paper-button toggles on-click="_toggleNormalize" hidden$="{{gravityNormalized}}">Normalize</paper-button>
+            <paper-button toggles on-click="_toggleNormalize" hidden$="{{!gravityNormalized}}">Show Original</paper-button>
           </div>
         </paper-card>
 
@@ -163,7 +164,7 @@
           type: Number,
           value: 100
         },
-        normalized:{
+        gravityNormalized:{
           type: Boolean,
           value: true
         },
@@ -188,18 +189,7 @@
         this.$.gyronorm.setHeadDirection();
       },
       _toggleNormalize: function(){
-        this.normalized = !this.normalized;
-        if(this.normalized){
-          this._normalizeGravity();
-        } else {
-          this._showOriginalGravity();
-        }
-      },
-      _normalizeGravity: function(){
-        this.$.gyronorm.provideNormalizedGravity();
-      },
-      _showOriginalGravity: function(){
-        this.$.gyronorm.provideOriginalGravity();
+        this.gravityNormalized = !this.gravityNormalized;
       }
     });
   </script>

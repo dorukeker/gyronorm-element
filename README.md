@@ -11,3 +11,8 @@ Below are the details of the HTML element and basic usage. If you want informati
 
 ## How to use
 
+### Attributes
+
+### Functions
+
+

@@ -69,6 +69,7 @@
         rotation-rate-gamma="{{rotationRateGamma}}"
         log-message="{{logMessage}}"
         decimal-count="{{decimalCount}}"
+        frequency="{{frequency}}"
     ></gyronorm-element>
 
     <!-- Start of interface  -->
@@ -157,6 +158,10 @@
         decimalCount: {
           type: Number,
           value: 3
+        },
+        frequency: {
+          type: Number,
+          value: 100
         },
         normalized:{
           type: Boolean,

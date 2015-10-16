@@ -23,7 +23,8 @@
         rotationRateGamma:{type: Number , notify: true , value: 0 , readOnly: true},
         // Log message attribute to pass the logs to the host
         logMessage:{type: String , notify: true , value: '', readOnly: true},
-        decimalCount:{type: Number, value: 2, observer: '_initGyronorm'} // TODO add observer to this
+        decimalCount:{type: Number, value: 2, observer: '_initGyronorm'},
+        frequency:{type: Number, value: 50, observer: '_initGyronorm'}
       },
       ready: function(){
 
@@ -40,7 +41,8 @@
 
         var args = {
           logger:this._onLogHandler,
-          decimalCount: this.decimalCount
+          decimalCount: this.decimalCount,
+          frequency: this.frequency
         };
 
         // Initialize gn object.

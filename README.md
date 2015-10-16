@@ -8,7 +8,7 @@ Below are the details of the HTML element and basic usage. If you want informati
 ## Installation
 
 ## How to add
-AFter installing the element to you project, you can use the HTML imports to add it to your HTML file.
+Use the HTML imports to add it to your HTML file.
 
 ```html
 ...
@@ -19,13 +19,17 @@ AFter installing the element to you project, you can use the HTML imports to add
 ```
 
 ## How to use
-After importing to your HTML file, you can use the element like any other HTML elements in the `<body></body>` section.
+Use the element like any other HTML elements in the `<body></body>` section.
 
 ```html
 ...
+
 <body>
+
 	<gyronorm-element></gyronorm-element>
+
 </body>
+
 ...
 ```
 
@@ -37,5 +41,45 @@ The attributes and functions are explained below.
 
 ### Attributes
 
-### Functions
+#### Gyroscope and accelerometer values
+Gyronorm.js provides the values of gyroscope and accelerometer in one object. The wrapper element has attributes to provide these values as separate attributes.
 
+After the element is rendered the following attributes will update and provide values (every millisecond defined in the frequency attribute.)
+
+You can bind a variable to those attribute on host element. So this variable will reflect the updated values. Below is an example.
+
+```html
+<body>
+
+	<gyronorm-element alpha="{{alphaValue}}"></gyronorm-element>
+
+	<paper-input label="alpha" value="[[alphaValue]]" disabled></paper-input>
+
+</body>
+
+```
+
+Here is a list of these attributes
+
+- alpha
+- beta
+- gamma
+- acceleration-x
+- acceleration-y
+- acceleration-z
+- gravity-x
+- gravity-y
+- gravity-z
+- rotation-rate-alpha
+- rotation-rate-beta
+- rotation-rate-gamma
+
+Please note that these values are all read-only and can be used only to pass the data from child element to the host element.
+
+#### Log messages
+
+
+#### Options
+
+
+### Function

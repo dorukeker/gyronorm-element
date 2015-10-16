@@ -26,7 +26,8 @@
         decimalCount:{type: Number, value: 2, observer: '_initGyronorm'},
         frequency:{type: Number, value: 50, observer: '_initGyronorm'},
         gravityNormalized:{type: Boolean, value: true, observer: '_onGravityNormalizedChanged'},
-        orientationBase:{type: String, value: GyroNorm.GAME, observer: '_initGyronorm'}
+        orientationBase:{type: String, value: GyroNorm.GAME, observer: '_initGyronorm'},
+        screenAdjusted:{type: Boolean, value: false, observer: '_initGyronorm'},
       },
       ready: function(){
 
@@ -51,7 +52,8 @@
           decimalCount: this.decimalCount,
           frequency: this.frequency,
           gravityNormalized: this.gravityNormalized,
-          orientationBase:this.orientationBase
+          orientationBase:this.orientationBase,
+          screenAdjusted:this.screenAdjusted
         };
 
         // Initialize gn object.

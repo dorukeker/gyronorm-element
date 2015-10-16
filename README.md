@@ -8,11 +8,17 @@ Below are the details of the HTML element and basic usage. If you want informati
 ## Installation
 
 ## How to add
+AFter installing the element to you project, you can use the HTML imports to add it to your HTML file.
+
+```html
+...
+<link rel="import" href="[path to the element]/gyronorm-element.html">
+...
+```
 
 ## How to use
 
 ### Attributes
 
 ### Functions
-
 

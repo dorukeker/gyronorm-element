@@ -12,7 +12,6 @@
     "LICENSE",
     "demo/*",
     "demo",
-    "Gruntfile.js",
     "package.json",
     "bower_components/*",
     "node_modules/*"

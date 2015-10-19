@@ -1,6 +1,6 @@
 {
   "name": "gyronorm-element",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "homepage": "https://github.com/dorukeker/gyronorm-element.git",
   "authors": [
     "Doruk Eker"
@@ -19,7 +19,9 @@
   ],
   "keywords": [
     "devicemotion",
-    "deviceorientation"
+    "deviceorientation",
+    "polymer",
+    "element"
   ],
   "license": "MIT",
   "devDependencies": {

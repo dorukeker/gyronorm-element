@@ -6,6 +6,17 @@ This element wraps the gyronorom.js library in an HTML element using Polymer. It
 Below are the details of the HTML element and basic usage. If you want information on the JavaScript version of gyronorm.js, please visit the [GitHub page](https://github.com/dorukeker/gyronorm.js).
 
 ## Installation
+Use Bower or NPM
+
+```sh
+$ bower install gyronorm-element
+```
+
+or
+
+```sh
+$ npm install gyronorm-element
+```
 
 ## How to add
 Use the HTML imports to add it to your HTML file.
